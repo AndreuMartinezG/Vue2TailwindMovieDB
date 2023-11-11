@@ -4,16 +4,19 @@
     <div class="flex flex-grow bg-blue-200">
       <router-view/>
     </div>
+    <FooterBar />
   </div>
 </template>
 
 <script>
 
 import NavBar from './components/NavBar.vue';
+import FooterBar from './components/FooterBar.vue';
 
 export default {
   components: {
-    NavBar
+    NavBar,
+    FooterBar,
   }
 }
 
