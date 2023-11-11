@@ -1,10 +1,10 @@
 <template>
   <div id="app" class="flex flex-col h-screen">
-    <NavBar/>
+    <NavBar class="flex flex-col"/>
     <div class="flex flex-grow bg-blue-200">
       <router-view/>
     </div>
-    <FooterBar />
+    <FooterBar class="flex flex-col" />
   </div>
 </template>
 

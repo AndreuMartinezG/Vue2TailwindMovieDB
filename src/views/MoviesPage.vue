@@ -1,7 +1,7 @@
 <template>
   <!--<CardTemplate />
   <p class="description pt-8 text-sm">{{ firstMovieName }}</p>-->
-  <div class="max-w-5xl flex items-center h-auto lg:h-screen flex-wrap mx-auto lg:my-0">
+  <div class="max-w-5xl flex items-center h-auto lg:flex-grow flex-wrap mx-auto lg:my-0">
     <!--Main Col-->
     <div id="profile"
       class="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-100 mx-6 lg:mx-0">
