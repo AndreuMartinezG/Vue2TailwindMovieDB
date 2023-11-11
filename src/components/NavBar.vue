@@ -116,6 +116,9 @@ export default {
   methods: {
     newSearch() {
       console.log(this.querry)
+
+      //linea para cambiar de vista a ResutladosBusqueda una vez econtrados resultados
+      // this.$routes.push("SearchResults")
     }
   },
 
