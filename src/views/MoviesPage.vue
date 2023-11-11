@@ -10,15 +10,12 @@
         <div class="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center"
           :style="{ 'background-image': 'url(' + image + ')' }"></div>
         <div class="form-inline flex flex-wrap content-between">
-          <input class="font-bold pt-8 lg:pt-0 lg:pl-6 justify-center mb-0 w-3/4 rounded shadow" v-model="querry"
-            placeholder="Busqueda" />
-          <button @click.prevent="newSearch()"
-            class="bg-blue-500 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow w-1/4">
-            Buscar
-          </button>
+
+          <!--
           <span v-if="searching">
             Buscando ....
           </span>
+          -->
         </div>
 
         <div class="form-inline flex flex-wrap content-between">
@@ -47,7 +44,7 @@
 <script>
 
 //import CardTemplate from '@/components/CardTemplate.vue';
-import { API_KEY, API_URL } from '../configMovies';
+import { API_KEY, API_URL, IMAGE_BASE_URL, POSTER_SIZE} from '../configMovies';
 
 export default {
   name: 'MoviesPage',
@@ -86,8 +83,8 @@ export default {
         .then(movieResults => {
           this.searching = false
           console.log(movieResults)
-          if (!movieResults) {
-            this.image = movieResults.results[0].backdrop_path
+          if (movieResults) {
+            this.image = IMAGE_BASE_URL + POSTER_SIZE + movieResults.results[0].backdrop_path
             if (movieResults.results[0].overview) {
               this.description = movieResults.results[0].overview
             } else {

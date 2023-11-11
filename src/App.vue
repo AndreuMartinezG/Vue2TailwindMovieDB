@@ -1,7 +1,7 @@
 <template>
-  <div id="app" class="h-screen">
+  <div id="app" class="flex flex-col h-screen">
     <NavBar/>
-    <div>
+    <div class="flex flex-grow bg-blue-200">
       <router-view/>
     </div>
   </div>
