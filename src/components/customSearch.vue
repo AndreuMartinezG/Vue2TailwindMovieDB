@@ -15,11 +15,17 @@
 <script>
 
 export default {
-    name: 'customSeach',
+    name: 'CustomSeach',
+
+    data (){
+        return {
+            querry: 'popular'
+        }
+    },
 
     methods: {
         sendDataToFather(){
-            this.$emit('dataFromChild', querry);
+            this.$emit('customSearchQuerry', {querry: this.querry});
         }
     }
 }
