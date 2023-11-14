@@ -1,16 +1,16 @@
 
 <template>
-  <div :class="{ 'animate-slide-in': !searching, 'hidden': searching }">
+  <div >
 
     <!--TITULO -->
-    <h1 class="font-bold pt-8 text-5xl text-gray-700" >{{searchTitle}} MOVIES</h1>
+    <h1 class="font-bold pt-8 text-5xl text-gray-700" :class="{ 'animate-slide-in': !searching, 'hidden': searching }">{{searchTitle}} MOVIES</h1>
 
     <!-- APARTADO SELECT PARA BUSQUEDA-->
     <CustomSearch @customSearchQuerry="saveDataSearchQuerry" />
 
     <!-- USO DEL COMPONENTE CardTemplate PARA MOSTRAR PELICULAS-->
     <div v-if="!searching" class="grid md:grid-cols-3 gap-4 sm:gird sm:grid-cols-2 sm:gap-2 pt-10 pb-10">
-      <CardTemplate v-for="(movieData, id) in movieResultsData" :key="id" :movie="movieData" :class="{ 'animate-slide-in': !searching}"/>
+      <CardTemplate v-for="(movieData, id) in movieResultsData" :key="id" :movie="movieData" :class="{ 'animate-fade-in': !searching, 'hidden': searching }"/>
     </div>
   </div>
 </template>
@@ -96,20 +96,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-@keyframes slideIn {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-.animate-slide-in {
-  animation: slideIn 1.75s ease-out;
-}
-
-</style>

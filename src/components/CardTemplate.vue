@@ -36,8 +36,8 @@
           </svg>
         </div>
         <span
-          class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">{{ averageStars }}
-          / 5</span>
+          class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">{{ totalStars }}
+          / 10</span>
       </div>
       <div>
         <a href="#"
@@ -73,6 +73,7 @@ export default {
     return {
       imgPath: '',
       averageStars: 0,
+      totalStars: 0,
       averageStarsActive: [
         this.star1 = false,
         this.star2 = false,
@@ -90,6 +91,8 @@ export default {
     updateComponent() {
       this.imgPath = IMAGE_BASE_URL + IMAGE_SIZE + this.movie.backdrop_path
       this.averageStars = Math.round(this.movie.vote_average / 2)
+      this.totalStars = parseFloat(this.movie.vote_average).toFixed(1)
+      this.totalStars = parseFloat(this.totalStars)
       let i = 0
       for (i = 0; i <= this.averageStarsActive.length; i++) {
         if (this.averageStars > [i]) {

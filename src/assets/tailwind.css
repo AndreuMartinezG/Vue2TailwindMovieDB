@@ -3,3 +3,38 @@
 @tailwind components;
 
 @tailwind utilities;
+
+
+/* ANIMACION DEFAULT PARA MENU DE PELICULAS Y SERIES*/
+@keyframes slideIn {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+}
+  
+.animate-slide-in {
+    animation: slideIn 1.75s ease-out;
+}
+  
+@keyframes fadeIn {
+    0% {
+      opacity: 0.1;
+    }
+    90%{
+      opacity: 0.5;
+    }
+    90%{
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+  
+.animate-fade-in {
+    animation: fadeIn 1.75s ease-out;
+}
+  
