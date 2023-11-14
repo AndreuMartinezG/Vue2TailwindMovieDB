@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="flex flex-col h-screen">
+  <div id="app" class="flex flex-col h-screen scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-300">
     <NavBar class="flex flex-col"/>
 
     <div class="flex flex-grow bg-blue-200 justify-center">
