@@ -1,8 +1,8 @@
 <template>
-  <div id="app" class="flex flex-col h-screen scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-300">
+  <div id="app" class="flex flex-col h-screen customScrollBar">
     <NavBar class="flex flex-col"/>
 
-    <div class="flex flex-grow bg-blue-200 justify-center">
+    <div class="flex flex-grow bg-blue-300 justify-center">
       <router-view/>
     </div>
     
@@ -34,4 +34,5 @@ export default {
   color: #2c3e50;
 }
 
+@import './assets/customScrollBar.css';
 </style>
