@@ -13,5 +13,13 @@ module.exports = {
     require('@tailwindcss/forms'),
     require('flowbite/plugin'),
   ],
+  variants: {
+    extend: {
+      backgroundColor: ['hover', 'focus', 'responsive'],
+      textColor: ['hover', 'focus', 'responsive'],
+      transform: ['hover', 'focus', 'responsive'],
+      // Agrega otras propiedades que deseas afectar con hover aquí
+    },
+  },
 }
 
