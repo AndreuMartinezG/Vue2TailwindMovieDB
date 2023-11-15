@@ -42,9 +42,7 @@ export default {
     return {
       querry: 'popular',
       cardMovieId: '',
-
       pageCounter: 1,
-      
       searchTitle: '',
       searching: false,
       movieData: {},
@@ -54,9 +52,9 @@ export default {
 
   methods: {
 
+    //GUARDAR PAGINA ACTUAL RECIBIDA POR EL COMPONENTE DE PAGINACIÓN
     savePageQuerry(data) {
       this.pageCounter = data.pageQuerry
-      console.log(this.pageCounter + " PAGE")
       this.newSearch();
     },
 
@@ -66,7 +64,7 @@ export default {
       this.newSearch();
     },
 
-    ////GUARDAR DATOS RECIBIDOS DEL COMPONENTE HIJO "CardTemplate.vue" Y LLAMADO A LA FUNCION "customSearch()"
+    //GUARDAR LA ID DE LA PELICULA RECIBIDA DEL COMPONENTE HIJO "CardTemplate.vue""
     saveCardSearchQuerry(data) {
       this.cardMovieId = data.cardQuerry
     },
