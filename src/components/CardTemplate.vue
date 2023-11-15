@@ -1,12 +1,14 @@
 <template>
-  <div
-    class="flex flex-col max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:transform hover:scale-105 hover:transition-transform hover:duration-200 m-4">
+  <div class="flex flex-col max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:transform hover:scale-105 hover:transition-transform hover:duration-200 m-4">
+    
     <img class="rounded-t-lg shadow" :src="imgPath" alt="Movie Poster" />
+    
     <div class="p-5 flex flex-col flex-grow">
+      
       <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ movie.title }}</h5>
       <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ movie.overview | formateo }}</p>
 
-      <!-- RATING-->
+      <!-- RATING EN ESTRELLAS-->
       <div class="flex flex-grow justify-center items-center mt-2.5 mb-5">
         <div class="flex items-center space-x-1 rtl:space-x-reverse">
           <svg class="w-4 h-4 " :class="{ 'star-active': averageStarsActive[0], 'star-inactive': !averageStarsActive[0] }"
@@ -39,8 +41,10 @@
           class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">{{ totalStars }}
           / 10</span>
       </div>
+
+      <!--BOTON PARA ENVIAR LA ID DE LA PELICULA/SERIE AL COMPONENTE PADRE NAVEGAR A "DetailPage.vue" Y REALIZAR EL FETCH AL NUEVO ENDPOINT-->
       <div>
-        <a href="#"
+        <a href="#" @click="sendDataToFather"
           class="w-32 inline-flex justify-center items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
           Read more
           <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -74,22 +78,28 @@ export default {
       imgPath: '',
       averageStars: 0,
       totalStars: 0,
+      movieId: 0,
       averageStarsActive: [
         this.star1 = false,
         this.star2 = false,
         this.star3 = false,
         this.star4 = false,
         this.star5 = false
-      ]
+      ],
     }
   },
 
   methods: {
-    consolePoste() {
-      //console.log(this.movie, this.imgPath)
+
+    //METODO PARA DEVOLVER INFORMACIÓN DE LA PELICULA AL COMPONENTE PADRE
+    sendDataToFather(){
+      this.$emit('cardSearchQuerry', {cardQuerry: this.movieId});
     },
+    
+    //METODO PARA ACTUALIZAR LA INFORMACIÓN DE LAS ESTRELLAS RATING Y ASIGNACIÓN A VARIAS VARIABLES
     updateComponent() {
       this.imgPath = IMAGE_BASE_URL + IMAGE_SIZE + this.movie.backdrop_path
+      this.movieId = this.movie.id
       this.averageStars = Math.round(this.movie.vote_average / 2)
       this.totalStars = parseFloat(this.movie.vote_average).toFixed(1)
       this.totalStars = parseFloat(this.totalStars)
@@ -103,6 +113,8 @@ export default {
   },
 
   filters: {
+
+    //FUNCIÓN PARA QUE NOS DEVUELVA SOLO LOS PRIMEROS 100 CARACTERES DE LA STING DE DESCRIPCIÓN DE LA PELÍCULA
     formateo(value) {
       if (value) {
         return value.substring(0, 100) + '...'
@@ -112,6 +124,7 @@ export default {
   },
 
   mounted() {
+    //LLAMAMOS AL METODO "updateComponent()" PARA ACTUALIZAR LA CARD CADA VEZ QUE SE RENDERIZA
     this.updateComponent()
   }
 
@@ -122,6 +135,7 @@ export default {
 
 <style scoped>
 
+/*DISEÑO ESPECIFICO PARA EL COLOR DE LAS ESTRELLAS DE RATING*/
 .star-active {
   --tw-text-opacity: 1;
   color: rgb(250 202 21 / var(--tw-text-opacity));
