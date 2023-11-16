@@ -16,7 +16,7 @@
     </div>
 
     <!--APARTADO PARA EL SISTEMA DE PAGINACIÓN-->
-    <PaginationBar @pageQuerry="savePageQuerry" :class="{ 'hidden': searching }" :pageCounter="pageCounter"/>
+    <PaginationBar @pageQuerry="savePageQuerry" :class="{ 'hidden': searching }"/>
 
   </div>
 </template>
@@ -61,6 +61,7 @@ export default {
     //GUARDAR DATOS RECIBIDOS DEL COMPONENTE HIJO "CustomSearch.vue" Y LLAMADO A LA FUNCION "newSearch()"
     saveDataSearchQuerry(data) {
       this.querry = data.querry
+      this.pageCounter = 1
       this.newSearch();
     },
 

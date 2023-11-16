@@ -5,7 +5,7 @@
 
                 <!--BOTÓN PREVIOUS PAGE-->
                 <li>
-                    <a href="#" @click="sendDataToFather(0)" :class="{ 'hidden': minPage }"
+                    <a href="#" @click="paginationProcess(0)" :class="{ 'hidden': minPage }"
                         class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white">
                         <span class="sr-only">Previous</span>
                         <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -18,52 +18,52 @@
 
                 <!--BOTÓN CON NUMBER PAGE-->
                 <li>
-                    <a href="#" @click="sendDataToFather(1)"
+                    <a href="#" @click="paginationProcess(1)"
                         class="flex items-center border justify-center px-4 h-10 leading-tight text-gray-500 bg-white  border-gray-300 hover:bg-gray-100 hover:text-gray-700  dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                         :class="{
-                            'dark:bg-gray-700 ms-0 border border-e-0 rounded-s-lg': activePage.page1,
-                            'dark:bg-gray-800': !activePage.page1
+                            'dark:bg-gray-700 ms-0 border border-e-0 rounded-s-lg': activePage[1],
+                            'dark:bg-gray-800': !activePage[1]
                         }">1
                     </a>
                 </li>
                 <li>
-                    <a href="#" @click="sendDataToFather(2)"
+                    <a href="#" @click="paginationProcess(2)"
                         class="flex items-center border justify-center px-4 h-10 leading-tight text-gray-500 bg-white  border-gray-300 hover:bg-gray-100 hover:text-gray-700  dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                         :class="{
-                            'dark:bg-gray-700': activePage.page2,
-                            'dark:bg-gray-800': !activePage.page2
+                            'dark:bg-gray-700 ': activePage[2],
+                            'dark:bg-gray-800': !activePage[2]
                         }">2
                     </a>
                 </li>
                 <li>
-                    <a href="#" @click="sendDataToFather(3)"
+                    <a href="#" @click="paginationProcess(3)"
                         class="flex items-center border justify-center px-4 h-10 leading-tight text-gray-500 bg-white  border-gray-300 hover:bg-gray-100 hover:text-gray-700  dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                         :class="{
-                            'dark:bg-gray-700': activePage.page3,
-                            'dark:bg-gray-800': !activePage.page3
+                            'dark:bg-gray-700 ': activePage[3],
+                            'dark:bg-gray-800': !activePage[3]
                         }">3
                     </a>
                 </li>
                 <li>
-                    <a href="#" @click="sendDataToFather(4)"
+                    <a href="#" @click="paginationProcess(4)"
                         class="flex items-center border justify-center px-4 h-10 leading-tight text-gray-500 bg-white  border-gray-300 hover:bg-gray-100 hover:text-gray-700  dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                         :class="{
-                            'dark:bg-gray-700': activePage.page4,
-                            'dark:bg-gray-800': !activePage.page4
+                            'dark:bg-gray-700 ': activePage[4],
+                            'dark:bg-gray-800': !activePage[4]
                         }">4</a>
                 </li>
                 <li>
-                    <a href="#" @click="sendDataToFather(5)"
+                    <a href="#" @click="paginationProcess(5)"
                         class="flex items-center border justify-center px-4 h-10 leading-tight text-gray-500 bg-white  border-gray-300 hover:bg-gray-100 hover:text-gray-700  dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                         :class="{
-                            'dark:bg-gray-700 ms-0 border border-s-0 rounded-e-lg': activePage.page5,
-                            'dark:bg-gray-800': !activePage.page5
+                            'dark:bg-gray-700 ms-0 border border-s-0 rounded-e-lg': activePage[5],
+                            'dark:bg-gray-800': !activePage[5]
                         }">5</a>
                 </li>
 
                 <!--BOTÓN NEXT PAGE-->
                 <li>
-                    <a href="#" @click="sendDataToFather(6)" :class="{ 'hidden': maxPage }"
+                    <a href="#" @click="paginationProcess(6)" :class="{ 'hidden': maxPage }"
                         class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100  dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white">
                         <span class="sr-only">Next</span>
                         <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -85,10 +85,7 @@ export default {
     name: 'PaginationBar',
 
     props: {
-        pageCounterFather: {
-            type: Number, 
-            require: true
-        }
+
     },
 
     data() {
@@ -96,98 +93,67 @@ export default {
             pageCounter: 1,
             maxPage: false,
             minPage: false,
-            activePage: [
-                this.page1 = false,
-                this.page2 = false,
-                this.page3 = false,
-                this.page4 = false,
-                this.page5 = false
-            ],
+            activePage: {
+                1: false,
+                2: false,
+                3: false,
+                4: false,
+                5: false
+            }
         }
     },
 
     methods: {
 
         //METODO PARA DEVOLVER INFORMACIÓN DE LA PELICULA AL COMPONENTE PADRE
+        sendDataToFather() {
 
-        sendDataToFather(pageNumber) {
-
-            this.paginationProcess(pageNumber)
+            this.$emit('pageQuerry', { pageQuerry: this.pageCounter });
 
         },
 
         //METODO PARA FILTRAR Y SELECCIONAR LA PAGINACIÓN SELECCIONADA
-        paginationProcess(pageNumberSelected) {
-            switch (pageNumberSelected) {
+        paginationProcess(pageNumber) {
+            switch (pageNumber) {
                 case 0:
                     if (this.pageCounter <= 1) {
                         this.pageCounter = 1
-                        this.minPage = true
                     } else {
                         this.pageCounter = this.pageCounter - 1
-                        this.minPage = false
                     }
                     break;
 
                 case 6:
                     if (this.pageCounter >= 5) {
                         this.pageCounter = 5
-                        this.maxPage = true
                     } else {
                         this.pageCounter = this.pageCounter + 1
-                        this.maxPage = false
                     }
                     break;
 
                 default:
-                    this.pageCounter = pageNumberSelected
-
+                    this.pageCounter = pageNumber
             }
-            this.pageCounterUpdate(this.pageCounter)
+
+            this.sendDataToFather()
+            this.pageActiveUpdate(this.pageCounter)
         },
-        
-        pageCounterUpdate(pageCounter) {
 
-            //ESTAMOS EN LA PAGINA 1 ?
-            if (pageCounter <= 1) {
-                this.minPage = true
-                this.activePage.page1 = true
-            } else {
-                this.minPage = false
-                this.activePage.page1 = false
+        //METODO PARA ACTUALIZAR EL COMPONENTE Y QUE MUESTRE LA PAGINA CORRECTA CON EL ESTILO CORRECTO
+        pageActiveUpdate(pageCounter) {
+
+            // Resetear todas las páginas a falso
+            for (let page in this.activePage) {
+                this.activePage[page] = false;
             }
 
-            //ESTAMOS EN LA PAGINA 2 ?
-            if (pageCounter == 2) {
-                this.activePage.page2 = true
-            } else {
-                this.activePage.page2 = false
-            }
+            // Establecer la página actual a verdadero
+            this.activePage[pageCounter] = true;
 
-            //ESTAMOS EN LA PAGINA 3 ?
-            if (pageCounter == 3) {
-                this.activePage.page3 = true
-            } else {
-                this.activePage.page3 = false
-            }
+            // Establecer maxPage y minPage según sea necesario
+            this.maxPage = pageCounter >= 5;
+            this.minPage = pageCounter <= 1;
 
-            //ESTAMOS EN LA PAGINA 4 ?
-            if (pageCounter == 4) {
-                this.activePage.page4 = true
-            } else {
-                this.activePage.page4 = false
-            }
-
-            //ESTAMOS EN LA PAGINA 5 ?
-            if (pageCounter >= 5) {
-                this.maxPage = true
-                this.activePage.page5 = true
-            } else {
-                this.maxPage = false
-                this.activePage.page5 = false
-            }
-
-            this.$emit('pageQuerry', { pageQuerry: this.pageCounter });
         },
     },
 
@@ -196,7 +162,7 @@ export default {
     },
 
     mounted() {
-        this.pageCounterUpdate(this.pageCounter)
-    }
+        this.pageActiveUpdate(this.pageCounter)
+    },
 }
 </script>
