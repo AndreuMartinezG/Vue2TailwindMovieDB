@@ -1,4 +1,5 @@
 <template>
+    
     <div class="flex justify-center py-8">
         <nav aria-label="Page navigation example">
             <ul class="flex items-center -space-x-px h-10 text-base">
