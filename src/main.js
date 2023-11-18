@@ -5,6 +5,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueTailwind from 'vue-tailwind'
 import VueLocalStorage from 'vue-ls'
+import VueYoutube from 'vue-youtube'
 
 // IMPORT ESTILOS CSS
 import './assets/tailwind.css'
@@ -14,6 +15,8 @@ import './index.css'
 const components = {
   //...
 }
+
+Vue.use(VueYoutube)
 
 // DARK MODE STUF
 

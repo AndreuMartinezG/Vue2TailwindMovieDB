@@ -18,7 +18,8 @@
     "vue-axios": "^3.5.2",
     "vue-ls": "^4.2.0",
     "vue-router": "^3.5.1",
-    "vue-tailwind": "^2.5.1"
+    "vue-tailwind": "^2.5.1",
+    "vue-youtube": "^1.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
