@@ -38,8 +38,8 @@
           </svg>
         </div>
         <span
-          class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">{{ totalStars }}
-          / 10</span>
+          class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">{{ totalStars }}
+          out of 10</span>
       </div>
 
       <!--BOTON PARA ENVIAR LA ID DE LA PELICULA/SERIE AL COMPONENTE PADRE-->
