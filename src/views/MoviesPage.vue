@@ -86,8 +86,11 @@ export default {
       */
       this.cardMovieId = data.cardQuerry
       this.$ls.set('movieID' , data.cardQuerry)
-      console.log(this.$ls.get('movieData', this.cardMovieId = "HOLA"))
-      console.log(this.cardMovieId)
+      this.$ls.set('moviePage' , this.pageCounter)
+      this.$ls.set('movieList' , this.querry)
+      this.$ls.set('backOption', false)
+      //this.$router.push({ path: '/', replace: false })
+      this.$router.push({ path: `/movies/${this.cardMovieId}` })
     },
 
     //FUNCION PARA LIMPIAR UNA STRING PARA EL TITULO
@@ -132,8 +135,13 @@ export default {
 
   mounted() {
 
-    //CUANDO ESTA MONTADO EL COMPONENTE REALIZAMOS UNA PRIMERA BUSQUEDA LLAMANDO A LA FUNCION "newSearch()"
-    this.newSearch()
+    if (this.$ls.get('backOption')) {
+      console.log("HOLA")
+    }else {
+      //CUANDO ESTA MONTADO EL COMPONENTE REALIZAMOS UNA PRIMERA BUSQUEDA LLAMANDO A LA FUNCION "newSearch()"
+      this.newSearch()
+    }
+    
   }
 }
 </script>
