@@ -1,6 +1,7 @@
 <template>
-    <div>
-        <p>HOLA DESDE DETAILPAGE</p>
+    <div v-if="!searching">
+        <youtube :video-id="videoId" ref="youtube" @playing="playing"></youtube>
+        <button @click="playVideo">play</button>
     </div>
 </template>
 
@@ -17,7 +18,8 @@ export default {
             querryID: 0,
             searching: false,
             resultsData: '',
-            videoResultsData: []
+            videoResultsData: [],
+            videoId: ''
         }
     },
 
@@ -26,21 +28,28 @@ export default {
     },
 
     created() {
-
+        this.querryID = this.$ls.get('movieID')
     },
 
     mounted() {
-
-        this.querryID = this.$ls.get('movieID')
 
         this.movieDetailSearch()
     },
 
     computed: {
-
+        player() {
+            return this.$refs.youtube.player
+        }
     },
 
     methods: {
+
+        playVideo() {
+            this.player.playVideo()
+        },
+        playing() {
+            console.log('o/ we are watching!!!')
+        },
 
         movieDetailSearch() {
             this.searching = true
@@ -78,6 +87,7 @@ export default {
                     if (videoDetailResult) {
 
                         this.videoResultsData = videoDetailResult.results.filter(video => video.type === "Trailer");
+                        this.videoId = this.videoResultsData[0].key
                         console.log(this.videoResultsData)
                     } else {
                         this.image = 'http://4.bp.blogspot.com/-CuZOfJdrDKY/UYmig8q88yI/AAAAAAAAEZM/bzVtIKPhXVA/s1600/Satoshi-nakamoto.gif'
@@ -89,7 +99,7 @@ export default {
                 .catch(err => console.error(err));
             this.searching = false
         }
-        
+
 
     },
 }
