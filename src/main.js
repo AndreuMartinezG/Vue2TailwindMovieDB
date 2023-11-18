@@ -34,7 +34,7 @@ Vue.use(VueLocalStorage)
 
 const options = {
   namespace: 'vuejs__', // Prefijo para evitar colisiones con otros datos en el almacenamiento local
-  name: 'localStorage', // Nombre del objeto en Vue para acceder a los métodos del paquete
+  name: 'ls', // Nombre del objeto en Vue para acceder a los métodos del paquete
   storage: 'local' // Puede ser 'local' o 'session'
 }
 
