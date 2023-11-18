@@ -79,6 +79,11 @@ export default {
     //GUARDAR LA ID DE LA PELICULA RECIBIDA DEL COMPONENTE HIJO "CardTemplate.vue""
     saveCardSearchQuerry(data) {
       this.cardMovieId = data.cardQuerry
+      let parsed = JSON.stringify(this.movieResultsData)
+      localStorage.setItem({'movieData' : parsed}, {'Page':this.pageCounter})
+      localStorage.setItem()
+
+      console.log(this.cardMovieId)
     },
 
     //FUNCION PARA LIMPIAR UNA STRING PARA EL TITULO

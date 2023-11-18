@@ -20,6 +20,8 @@ import { onMounted } from 'vue'
 import { initFlowbite } from 'flowbite'
 
 onMounted(() => {
+
+  //INICIAMOS LA LIBRERIA DE ESTILOS
     initFlowbite();
 })
 
