@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:transform hover:scale-105 hover:transition-transform hover:duration-200 m-4">
+  <div class="flex flex-col max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 transform hover:scale-105 transition-transform duration-200 hover:duration-200 m-4">
     
     <img class="rounded-t-lg shadow" :src="imgPath" alt="Movie Poster" />
     

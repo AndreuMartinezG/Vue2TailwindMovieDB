@@ -11,8 +11,11 @@
 
     <!--USO DEL COMPONENTE CardTemplate PARA MOSTRAR PELÍCULAS-->
     <div v-if="!searching" class="grid md:grid-cols-3 gap-4 sm:gird sm:grid-cols-2 sm:gap-2 pt-10 pb-10">
-      <CardTemplate @cardSearchQuerry="saveCardSearchQuerry" v-for="(movieData, id) in movieResultsData" :key="id"
-        :movie="movieData" :class="{ 'animate-fade-in': !searching, 'hidden': searching }" />
+      <CardTemplate 
+        @cardSearchQuerry="saveCardSearchQuerry" 
+        v-for="(movieData, id) in filteredMovieResultsData" :key="id"
+        :movie="movieData" 
+        :class="{ 'animate-fade-in': !searching, 'hidden': searching }" />
     </div>
 
     <!--APARTADO PARA EL SISTEMA DE PAGINACIÓN-->
@@ -48,6 +51,14 @@ export default {
       movieData: {},
       movieResultsData: [{}],
     }
+  },
+
+  computed: {
+
+    filteredMovieResultsData() {
+      return this.movieResultsData.filter(movie => movie.backdrop_path !== null);
+    }
+
   },
 
   methods: {
