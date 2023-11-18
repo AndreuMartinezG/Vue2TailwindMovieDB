@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomePage from '../views/HomePage.vue'
+import DetailPage from '@/views/DetailPage.vue'
 
 
 Vue.use(VueRouter)
@@ -15,7 +16,12 @@ const routes = [
     path: '/movies',
     name: 'movies',
     component: () => import('../views/MoviesPage.vue')
-  }
+  },
+  {
+    path: '/movies/:id',
+    name: 'DetailPage',
+    component: DetailPage
+  },
 ]
 
 const router = new VueRouter({
