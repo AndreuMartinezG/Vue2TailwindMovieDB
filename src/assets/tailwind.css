@@ -38,3 +38,5 @@
     animation: fadeIn 1.75s ease-out;
 }
   
+.gradientBg {
+  background: radial-gradient(circle, rgba(2,97,143,1) 0%, rgba(0,212,255,1) 28%, rgba(1,142,186,1) 79%);}
