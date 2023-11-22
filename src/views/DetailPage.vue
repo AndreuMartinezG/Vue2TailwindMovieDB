@@ -23,7 +23,7 @@
                 id="fullWidthTab" data-tabs-toggle="#fullWidthTabContent" role="tablist">
                 <li class="w-full">
                     <button id="stats-tab" data-tabs-target="#stats" type="button" role="tab" aria-controls="stats"
-                        aria-selected="false"
+                        aria-selected="true"
                         class="inline-block w-full p-4 rounded-ss-md hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600">Statistics</button>
                 </li>
                 <li class="w-full">
@@ -33,7 +33,7 @@
                 </li>
                 <li class="w-full">
                     <button id="overview-tab" data-tabs-target="#overview" type="button" role="tab" aria-controls="overview"
-                        aria-selected="true"
+                        aria-selected="false"
                         class="inline-block w-full p-4 rounded-se-md hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600">Overview</button>
                 </li>
             </ul>
@@ -42,48 +42,50 @@
                     role="tabpanel" aria-labelledby="stats-tab">
                     <dl
                         class="max-w-screen-xl p-4 mx-auto divide-y divide-gray-200 dark:divide-gray-700 text-gray-900 sm:grid-cols-3 xl:grid-cols-6 dark:text-white sm:p-8">
-                        <div class="flex flex-col items-center justify-center">
+                        <div class="mb-2 flex flex-col items-center justify-center">
 
-                            <dt class="mb-2 text-3xl font-extrabold">Developers</dt>
-                            <dd class="text-gray-500 dark:text-gray-400">Developers</dd>
-                            <span
-                                class="inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
+                            <dt class="mb-2 text-3xl font-extrabold">Home Page</dt>
+                            <a class="text-gray-500 dark:text-gray-400" :href=resultsData.homepage  target="_blank" rel="noopener noreferrer"> {{resultsData.homepage}}</a>
+   
+                        </div>
+                        <div class="mb-2 flex flex-col items-center justify-center">
+                            <dt class="mb-2 text-3xl font-extrabold">Producction Companies</dt>
+                            <span v-for="(companies, id) in resultsData.production_companies" :key="id"
+                                class="mb-2 inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
                                 <span class="w-2 h-2 me-1 bg-red-500 rounded-full"></span>
-                                Unavailable
+                                {{companies.name}}
                             </span>
                         </div>
-                        <div class="flex flex-col items-center justify-center">
-                            <dt class="mb-2 text-3xl font-extrabold">100M+</dt>
-                            <dd class="text-gray-500 dark:text-gray-400">Public repositories</dd>
+                        <div class="mb-2 flex flex-col items-center justify-center">
+                            <dt class="mb-2 text-3xl font-extrabold">Genres</dt>
+                            <span v-for="(genres, id) in resultsData.genres" :key="id"
+                                class="mb-2 inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
+                                <span class=" flex flex-row w-2 h-2 me-1 bg-red-500 rounded-full"></span>
+                                {{genres.name}}
+                            </span>
                         </div>
-                        <div class="flex flex-col items-center justify-center">
-                            <dt class="mb-2 text-3xl font-extrabold">1000s</dt>
-                            <dd class="text-gray-500 dark:text-gray-400">Open source projects</dd>
+                        <div class="mb-2 flex flex-col items-center justify-center">
+                            <dt class="mb-2 text-3xl font-extrabold">Budget / Revenue</dt>
+                            <span 
+                                class="mb-2 inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
+                                <span class="mb-2  flex flex-row w-2 h-2 me-1 bg-red-500 rounded-full"></span>
+                                {{resultsData.budget}} $
+                            </span>
+                            <span 
+                                class="mb-2 inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
+                                <span class=" flex flex-row w-2 h-2 me-1 bg-red-500 rounded-full"></span>
+                                {{resultsData.revenue}} $
+                            </span>
                         </div>
-                        <div class="flex flex-col items-center justify-center">
-                            <dt class="mb-2 text-3xl font-extrabold">1B+</dt>
-                            <dd class="text-gray-500 dark:text-gray-400">Contributors</dd>
+                        <div class="mb-2 flex flex-col items-center justify-center">
+                            <dt class="mb-2 text-3xl font-extrabold">Release Date</dt>
+                            <dd class="mb-2 text-gray-500 dark:text-gray-400">{{resultsData.release_date}}</dd>
                         </div>
-                        <div class="flex flex-col items-center justify-center">
-                            <dt class="mb-2 text-3xl font-extrabold">90+</dt>
-                            <dd class="text-gray-500 dark:text-gray-400">Top Forbes companies</dd>
+                        <div class="mb-2 flex flex-col items-center justify-center">
+                            <dt class="mb-2 text-3xl font-extrabold">Vote Average</dt>
+                            <dd class="mb-2 text-gray-500 dark:text-gray-400">{{resultsData.vote_average}}</dd>
                         </div>
-                        <div class="flex flex-col items-center justify-center">
-                            <dt class="mb-2 text-3xl font-extrabold">4M+</dt>
-                            <dd class="text-gray-500 dark:text-gray-400">Organizations</dd>
-                        </div>
-                        <div class="flex flex-col items-center justify-center">
-                            <dt class="mb-2 text-3xl font-extrabold">4M+</dt>
-                            <dd class="text-gray-500 dark:text-gray-400">Organizations</dd>
-                        </div>
-                        <div class="flex flex-col items-center justify-center">
-                            <dt class="mb-2 text-3xl font-extrabold">4M+</dt>
-                            <dd class="text-gray-500 dark:text-gray-400">Organizations</dd>
-                        </div>
-                        <div class="flex flex-col items-center justify-center">
-                            <dt class="mb-2 text-3xl font-extrabold">4M+</dt>
-                            <dd class="text-gray-500 dark:text-gray-400">Organizations</dd>
-                        </div>
+               
                     </dl>
                 </div>
                 <div class="hidden " id="trailer" role="tabpanel" aria-labelledby="trailer-tab">
