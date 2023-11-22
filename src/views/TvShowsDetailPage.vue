@@ -65,21 +65,13 @@
                             </span>
                         </div>
                         <div class="mb-2 flex flex-col items-center justify-center">
-                            <dt class="mb-2 text-3xl font-extrabold">Budget / Revenue</dt>
-                            <span 
-                                class="mb-2 inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
-                                <span class="mb-2  flex flex-row w-2 h-2 me-1 bg-red-500 rounded-full"></span>
-                                {{resultsData.budget}} $
-                            </span>
-                            <span 
-                                class="mb-2 inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
-                                <span class=" flex flex-row w-2 h-2 me-1 bg-red-500 rounded-full"></span>
-                                {{resultsData.revenue}} $
-                            </span>
+                            <dt class="mb-2 text-3xl font-extrabold">Nº Seasons</dt>
+                            <dd class="mb-2 text-gray-500 dark:text-gray-400">{{resultsData.number_of_seasons}}</dd>
+
                         </div>
                         <div class="mb-2 flex flex-col items-center justify-center">
-                            <dt class="mb-2 text-3xl font-extrabold">Release Date</dt>
-                            <dd class="mb-2 text-gray-500 dark:text-gray-400">{{resultsData.release_date}}</dd>
+                            <dt class="mb-2 text-3xl font-extrabold">Number of Episodes</dt>
+                            <dd class="mb-2 text-gray-500 dark:text-gray-400">{{resultsData.number_of_episodes}}</dd>
                         </div>
                         <div class="mb-2 flex flex-col items-center justify-center">
                             <dt class="mb-2 text-3xl font-extrabold">Vote Average</dt>
