@@ -7,7 +7,7 @@
       {{ searchTitle }} MOVIES</h1>
 
     <!--APARTADO SELECT PARA BUSQUEDA-->
-    <CustomSearch @customSearchQuerry="saveDataSearchQuerry" :class="{ 'hidden': searching }"/>
+    <CustomSearch @customSearchQuerry="saveDataSearchQuerry" :class="{ 'hidden': searching }" :movieList="querry"/>
 
     <!--USO DEL COMPONENTE CardTemplate PARA MOSTRAR PELÍCULAS-->
     <div v-if="!searching" class="grid md:grid-cols-3 gap-4 sm:gird sm:grid-cols-2 sm:gap-2 pt-10 pb-10">
@@ -19,7 +19,7 @@
     </div>
 
     <!--APARTADO PARA EL SISTEMA DE PAGINACIÓN-->
-    <PaginationBar @pageQuerry="savePageQuerry" :class="{ 'hidden': searching }"/>
+    <PaginationBar @pageQuerry="savePageQuerry" :class="{ 'hidden': searching }" :page="pageCounterUpdater"/>
 
   </div>
 </template>
@@ -46,6 +46,7 @@ export default {
       querry: 'popular',
       cardMovieId: '',
       pageCounter: 1,
+      pageCounterUpdater: 1,
       searchTitle: '',
       searching: false,
       movieData: {},
@@ -72,23 +73,18 @@ export default {
     //GUARDAR DATOS RECIBIDOS DEL COMPONENTE HIJO "CustomSearch.vue" Y LLAMADO A LA FUNCION "newSearch()"
     saveDataSearchQuerry(data) {
       this.querry = data.querry
-      this.pageCounter = 1
+      this.pageCounterUpdater = 1
+
+      
       this.newSearch();
     },
 
     //GUARDAR LA ID DE LA PELICULA RECIBIDA DEL COMPONENTE HIJO "CardTemplate.vue""
     saveCardSearchQuerry(data) {
-      /*
-      this.cardMovieId = data.cardQuerry
-      let parsed = JSON.stringify(this.movieResultsData)
-      localStorage.setItem({'movieData' : parsed}, {'Page':this.pageCounter})
-      localStorage.setItem()
-      */
       this.cardMovieId = data.cardQuerry
       this.$ls.set('movieID' , data.cardQuerry)
       this.$ls.set('moviePage' , this.pageCounter)
       this.$ls.set('movieList' , this.querry)
-      this.$ls.set('backOption', false)
       //this.$router.push({ path: '/', replace: false })
       this.$router.push({ path: `/movies/${this.cardMovieId}` })
     },
@@ -115,6 +111,7 @@ export default {
       fetch(API_URL + 'movie/' + this.querry + '?language=en-US&page=' + this.pageCounter, options)
         .then(response => response.json())
         .then(movieResults => {
+          console.log(this.pageCounter)
           this.searching = false
           this.searchTitle = this.convertToUpperCase(this.querry)
           if (movieResults) {
@@ -127,6 +124,7 @@ export default {
         })
         //TRATAMIENTO DE ERRORES DEL FETCH
         .catch(err => console.error(err));
+      
     },
   },
 
@@ -134,12 +132,28 @@ export default {
   },
 
   mounted() {
-
     if (this.$ls.get('backOption')) {
-      console.log("HOLA")
+      this.querry = this.$ls.get('movieList')
+      this.pageCounter = this.$ls.get('moviePage')  
+      this.$ls.set('backOption', false)
+      this.newSearch()
     }else {
       //CUANDO ESTA MONTADO EL COMPONENTE REALIZAMOS UNA PRIMERA BUSQUEDA LLAMANDO A LA FUNCION "newSearch()"
+      console.log("mounted")
       this.newSearch()
+    }
+  },
+  created() {
+
+      console.log("created")
+
+  },
+  updated(){
+    
+    if(this.pageCounter != this.pageCounterUpdater ){
+      console.log("UPDATED MOVIES PAGE " + this.pageCounter + " PAge")
+      this.newSearch()
+      this.pageCounterUpdater = this.pageCounter 
     }
     
   }

@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col w-2/3 justify-center items-center">
         <div class="flex w-full pt-4 justify-start">
-            <a href="/movies"
+            <a href="/movies" @click="backOption"
                 class="w-24 inline-flex justify-center items-center px-1 py-2 text-sm font-medium text-center focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-400 bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4  focus:ring-blue-300 dark:focus:ring-blue-800">
 
                 <svg class="w-2 h-2 mr-1 text-gray-800 dark:text-white" aria-hidden="true"
@@ -145,6 +145,10 @@ export default {
     },
 
     methods: {
+        backOption() {
+
+            this.$ls.set('backOption' , true)
+        },
 
         playVideo() {
             this.player.playVideo()

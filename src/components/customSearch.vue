@@ -19,7 +19,7 @@ export default {
 
     data (){
         return {
-            querry: 'popular'
+            querry: 'Choose an option'
         }
     },
 
@@ -27,6 +27,13 @@ export default {
         sendDataToFather(){
             this.$emit('customSearchQuerry', {querry: this.querry});
         }
+    },
+
+    created(){
+
+    },
+    mounted(){
+
     }
 }
 

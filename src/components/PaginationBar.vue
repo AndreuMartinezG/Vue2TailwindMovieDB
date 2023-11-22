@@ -1,5 +1,4 @@
 <template>
-    
     <div class="flex justify-center py-8">
         <nav aria-label="Page navigation example">
             <ul class="flex items-center -space-x-px h-10 text-base">
@@ -86,12 +85,16 @@ export default {
     name: 'PaginationBar',
 
     props: {
-
+        page: {
+            type: Number,
+            required: true,
+        }
     },
 
     data() {
         return {
             pageCounter: 1,
+            pageCounterUpdated: '',
             maxPage: false,
             minPage: false,
             activePage: {
@@ -104,11 +107,17 @@ export default {
         }
     },
 
+    computed: {
+
+
+    },
+
     methods: {
 
         //METODO PARA DEVOLVER INFORMACIÓN DE LA PELICULA AL COMPONENTE PADRE
         sendDataToFather() {
-
+            console.log("send data to father pag")
+            this.$ls.set('moviePage' , this.pageCounter)
             this.$emit('pageQuerry', { pageQuerry: this.pageCounter });
 
         },
@@ -155,6 +164,8 @@ export default {
             this.maxPage = pageCounter >= 5;
             this.minPage = pageCounter <= 1;
 
+            
+
         },
     },
 
@@ -163,7 +174,26 @@ export default {
     },
 
     mounted() {
+        this.pageCounter = this.page
         this.pageActiveUpdate(this.pageCounter)
+        console.log("PAGINATION BAR MOUNTED")
     },
+
+    updated() {
+        console.log(this.pageCounter)
+        console.log(this.page)
+        console.log(this.pageCounterUpdated)
+        if (this.page != this.pageCounterUpdated) {
+            console.log("UPDATED" + this.pageCounter + "|" + this.page)
+            this.pageActiveUpdate(this.pageCounter) 
+            this.$ls.set('moviePage', this.pageCounter)
+            this.pageCounterUpdated = this.page
+            
+
+        }
+        
+        console.log("UPDATE PAGINATION BAR SIN PASAR POR IF")
+    }
+
 }
 </script>
