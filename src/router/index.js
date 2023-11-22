@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomePage from '../views/HomePage.vue'
 import MoviesPage from '@/views/MoviesPage.vue'
 import DetailPage from '@/views/DetailPage.vue'
+import TvShowsPage from '@/views/TvShowsPage.vue'
 
 
 Vue.use(VueRouter)
@@ -23,6 +24,11 @@ const routes = [
     name: 'DetailPage',
     component: DetailPage
   },
+  {
+    path: '/tvshows',
+    name: 'TvShowsPage',
+    component: TvShowsPage
+  }
 ]
 
 const router = new VueRouter({
