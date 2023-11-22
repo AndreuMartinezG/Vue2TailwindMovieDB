@@ -116,7 +116,6 @@ export default {
 
         //METODO PARA DEVOLVER INFORMACIÓN DE LA PELICULA AL COMPONENTE PADRE
         sendDataToFather() {
-            console.log("send data to father pag")
             this.$ls.set('moviePage' , this.pageCounter)
             this.$emit('pageQuerry', { pageQuerry: this.pageCounter });
 
@@ -176,23 +175,16 @@ export default {
     mounted() {
         this.pageCounter = this.page
         this.pageActiveUpdate(this.pageCounter)
-        console.log("PAGINATION BAR MOUNTED")
     },
 
     updated() {
-        console.log(this.pageCounter)
-        console.log(this.page)
-        console.log(this.pageCounterUpdated)
         if (this.page != this.pageCounterUpdated) {
-            console.log("UPDATED" + this.pageCounter + "|" + this.page)
             this.pageActiveUpdate(this.pageCounter) 
             this.$ls.set('moviePage', this.pageCounter)
             this.pageCounterUpdated = this.page
             
 
         }
-        
-        console.log("UPDATE PAGINATION BAR SIN PASAR POR IF")
     }
 
 }

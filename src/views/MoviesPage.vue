@@ -111,7 +111,6 @@ export default {
       fetch(API_URL + 'movie/' + this.querry + '?language=en-US&page=' + this.pageCounter, options)
         .then(response => response.json())
         .then(movieResults => {
-          console.log(this.pageCounter)
           this.searching = false
           this.searchTitle = this.convertToUpperCase(this.querry)
           if (movieResults) {
@@ -139,19 +138,15 @@ export default {
       this.newSearch()
     }else {
       //CUANDO ESTA MONTADO EL COMPONENTE REALIZAMOS UNA PRIMERA BUSQUEDA LLAMANDO A LA FUNCION "newSearch()"
-      console.log("mounted")
       this.newSearch()
     }
   },
   created() {
 
-      console.log("created")
-
   },
   updated(){
     
     if(this.pageCounter != this.pageCounterUpdater ){
-      console.log("UPDATED MOVIES PAGE " + this.pageCounter + " PAge")
       this.newSearch()
       this.pageCounterUpdater = this.pageCounter 
     }
