@@ -116,7 +116,11 @@ export default {
 
         //METODO PARA DEVOLVER INFORMACIÓN DE LA PELICULA AL COMPONENTE PADRE
         sendDataToFather() {
-            this.$ls.set('moviePage' , this.pageCounter)
+            if(this.$ls.get('tvshowOption')){
+                this.$ls.set('tvshowPage' , this.pageCounter)
+            }else {
+                this.$ls.set('moviePage' , this.pageCounter)
+            }
             this.$emit('pageQuerry', { pageQuerry: this.pageCounter });
 
         },
@@ -180,7 +184,11 @@ export default {
     updated() {
         if (this.page != this.pageCounterUpdated) {
             this.pageActiveUpdate(this.pageCounter) 
-            this.$ls.set('moviePage', this.pageCounter)
+            if(this.$ls.get('tvshowOption')){
+                this.$ls.set('tvshowPage' , this.pageCounter)
+            }else {
+                this.$ls.set('moviePage' , this.pageCounter)
+            }
             this.pageCounterUpdated = this.page
             
 

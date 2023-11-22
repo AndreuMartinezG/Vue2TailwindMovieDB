@@ -86,7 +86,7 @@
         this.$ls.set('tvshowPage' , this.pageCounter)
         this.$ls.set('tvshowList' , this.querry)
         //this.$router.push({ path: '/', replace: false })
-        this.$router.push({ path: `/tvshow/${this.cardtvshowsId}` })
+        this.$router.push({ path: `/tvshows/${this.cardtvshowsId}` })
       },
   
       //FUNCION PARA LIMPIAR UNA STRING PARA EL TITULO
@@ -132,10 +132,10 @@
     },
   
     mounted() {
-      if (this.$ls.get('backOption')) {
-        this.querry = this.$ls.get('tvshowsList')
-        this.pageCounter = this.$ls.get('tvshowsPage')  
-        this.$ls.set('backOption', false)
+      if (this.$ls.get('tvshowbackOption')) {
+        this.querry = this.$ls.get('tvshowList')
+        this.pageCounter = this.$ls.get('tvshowPage')  
+        this.$ls.set('tvshowbackOption', false)
         this.newSearch()
       }else {
         //CUANDO ESTA MONTADO EL COMPONENTE REALIZAMOS UNA PRIMERA BUSQUEDA LLAMANDO A LA FUNCION "newSearch()"

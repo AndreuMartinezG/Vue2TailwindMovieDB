@@ -4,6 +4,7 @@ import HomePage from '../views/HomePage.vue'
 import MoviesPage from '@/views/MoviesPage.vue'
 import DetailPage from '@/views/DetailPage.vue'
 import TvShowsPage from '@/views/TvShowsPage.vue'
+import TvShowsDetailPage from '@/views/TvShowsDetailPage.vue'
 
 
 Vue.use(VueRouter)
@@ -28,7 +29,12 @@ const routes = [
     path: '/tvshows',
     name: 'TvShowsPage',
     component: TvShowsPage
-  }
+  },
+  {
+    path: '/tvshows/:id',
+    name: 'TvShowsDetailPage',
+    component: TvShowsDetailPage
+  },
 ]
 
 const router = new VueRouter({
