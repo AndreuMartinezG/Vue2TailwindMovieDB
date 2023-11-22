@@ -142,7 +142,7 @@ export default {
     }
   },
   created() {
-
+    this.$ls.set('tvshowOption' , false)
   },
   updated(){
     

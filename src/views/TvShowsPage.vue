@@ -143,7 +143,7 @@
       }
     },
     created() {
-  
+        this.$ls.set('tvshowOption' , true)
     },
     updated(){
       
