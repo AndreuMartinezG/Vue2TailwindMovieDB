@@ -1,67 +1,70 @@
 <template>
-    <div class="mt-16 md:mt-0">
-        <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-            Everything you need to start a website
-        </h2>
-        <p class="text-lg mt-4 text-slate-600">
-            Astro comes batteries included. It takes the best parts of state-of-the-art
-            tools and adds its own innovations.
-        </p>
+    <div class="flex justify-center items-center md:mx-8 sm:mx-4 sx:mx-4 mx-4 rounded-lg">
+        <section class=" bg-white dark:bg-gray-900 rounded-ee-lg rounded-es-lg">
+            <div class="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:pt-28">
+                <h3 class="text-4xl lg:text-5xl font-bold lg:tracking-tight dark:text-white">
+                    Everything i learn from this proyect
+                </h3>
+                <p class="text-lg mt-4  text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+                    This was 10 day journey where i learn a bit from Vue2 Framework and Tailwind Css.
+                </p>
 
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
-            <div v-for="item in features" :key="item.title" class="flex gap-4 items-start">
-                <div class="mt-1 bg-black rounded-full p-2 w-8 h-8 shrink-0">
-                    <Icon class="text-white" :name="item.icon" />
-                </div>
-                <div>
-                    <h3 class="font-semibold text-lg">{{ item.title }}</h3>
-                    <p class="text-slate-500 mt-2 leading-relaxed">{{ item.description }}</p>
+                <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+                    <div v-for="item in features" :key="item.title" class="flex gap-4 items-start">
+
+                        <div>
+                            <h3 class="font-semibold text-lg dark:text-gray-400">{{ item.title }}</h3>
+                            <p class="text-slate-500 mt-2 leading-relaxed">{{ item.description }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 </template>
   
 <script>
 
 export default {
+
+    name: 'HomeBody',
     data() {
         return {
             features: [
                 {
-                    title: "Bring Your Own Framework",
+                    title: "Vue2, New Framework for me",
                     description:
-                        "Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.",
+                        "I build some apps using React, but this was an oportunity to see things out of the box and try something new.",
                     icon: "bx:bxs-briefcase",
                 },
                 {
-                    title: "100% Static HTML, No JS",
+                    title: "Style with Tailwind",
                     description:
-                        "Astro renders your entire page to static HTML, removing all JavaScript from your final build by default.",
+                        "This is my first time using Tailwind. I feel it a bit messi at the start, but later was very easy to use and play with styles",
                     icon: "bx:bxs-window-alt",
                 },
                 {
-                    title: "On-Demand Components",
+                    title: "Vue2 Lifecycle HOOKS",
                     description:
-                        "Need some JS? Astro can automatically hydrate interactive components when they become visible on the page.  ",
+                        "Need to work bit more to get comfortable with this way to HOOKS, in the end is more interesting as you get use to it, isn't very hard",
                     icon: "bx:bxs-data",
                 },
                 {
-                    title: "Broad Integration",
+                    title: "How to use Components",
                     description:
-                        "Astro supports TypeScript, Scoped CSS, CSS Modules, Sass, Tailwind, Markdown, MDX, and any other npm packages.",
+                        "Vue2 has a similar way to 'React' about components, the only things that changes is the way you send props to Child component",
                     icon: "bx:bxs-bot",
                 },
                 {
-                    title: "SEO Enabled",
+                    title: "App Router",
                     description:
-                        "Automatic sitemaps, RSS feeds, pagination and collections take the pain out of SEO and syndication. It just works!",
+                        "The way Vue2 manage router tree its very intuitive and easy as other frameworks uses similar things for this purpose",
                     icon: "bx:bxs-file-find",
                 },
                 {
-                    title: "Community",
+                    title: "Vue2 Directives",
                     description:
-                        "Astro is an open source project powered by hundreds of contributors making thousands of individual contributions.",
+                        "This is the thing i liked most, 'Directives' v-for, v-bind, v-if... very usefull and original ",
                     icon: "bx:bxs-user",
                 },
             ],
